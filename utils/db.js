@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-require("dotenv").config();
 const url = "mongodb://localhost/Distress";
 const url1 =
   "mongodb+srv://wrsMKqHXcLIdob5I:wrsMKqHXcLIdob5I@cluster0.vxqcy.mongodb.net/distressDB?retryWrites=true&w=majority";
