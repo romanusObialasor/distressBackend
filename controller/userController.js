@@ -2,10 +2,6 @@ const userModel = require("../model/userModel");
 const bcrypt = require("bcrypt");
 const cloudinary = require("../utils/cloudinary");
 const jwt = require("jsonwebtoken");
-const client = require("twilio")(
-  `ACdbc98e5aba99406a441640f68b6daf09`,
-  `865158526c347a817d60289a4d9c1cd2`
-);
 
 const getAllUser = async (req, res) => {
   try {
