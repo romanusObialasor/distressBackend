@@ -1,6 +1,5 @@
 const userModel = require("../model/userModel");
 const bcrypt = require("bcrypt");
-const cloudinary = require("../utils/cloudinary");
 const jwt = require("jsonwebtoken");
 
 const getAllUser = async (req, res) => {
