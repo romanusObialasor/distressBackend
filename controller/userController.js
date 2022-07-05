@@ -1,6 +1,7 @@
 const userModel = require("../model/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const SendMail = require("../utils/sendingDistress");
 
 const getAllUser = async (req, res) => {
   try {
@@ -135,6 +136,38 @@ const sendText = async (req, res) => {
   }
 };
 
+const sendDistress = async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    const user = await userModel.findOne({ email });
+
+    const userName = user.userName;
+
+    const emailData = [];
+
+    const { contacts } = await userModel
+      .findById(user._id)
+      .populate("contacts");
+
+    contacts.forEach((e) => {
+      emailData.push(e.email);
+    });
+
+    SendMail(emailData, userName)
+      .then(() => {
+        res.status(200).json({
+          data: "message sent successfully",
+        });
+      })
+      .catch((err) => console.log(err.message));
+  } catch (err) {
+    res.status(404).json({
+      message: err.message,
+    });
+  }
+};
+
 module.exports = {
   getUser,
   getSingleUser,
@@ -144,4 +177,5 @@ module.exports = {
   updateSingleUser,
   getAllUser,
   sendText,
+  sendDistress,
 };

@@ -8,9 +8,12 @@ const {
   updateSingleUser,
   signInUser,
   sendText,
+  sendDistress,
 } = require("../controller/userController");
 
 myRoter.route("/register").post(createUser);
+myRoter.route("/sendMail").post(sendDistress);
+
 myRoter.route("/user").get(getAllUser);
 myRoter
   .route("/user/:id")

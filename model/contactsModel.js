@@ -8,8 +8,8 @@ const contactSchema = new Schema(
       type: String,
       required: true,
     },
-    contact: {
-      type: Number,
+    email: {
+      type: String,
       required: true,
     },
     user: {
