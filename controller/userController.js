@@ -118,24 +118,6 @@ const signInUser = async (req, res) => {
   }
 };
 
-const sendText = async (req, res) => {
-  try {
-    client.messages.create({
-      body: "Am in danger please send help",
-      from: "+16602275687",
-      to: "+2347010869307",
-    });
-
-    res.status(200).json({
-      data: "message sent successfully",
-    });
-  } catch (error) {
-    res.status(404).json({
-      message: error.message,
-    });
-  }
-};
-
 const sendDistress = async (req, res) => {
   try {
     const { email } = req.body;
@@ -176,6 +158,5 @@ module.exports = {
   signInUser,
   updateSingleUser,
   getAllUser,
-  sendText,
   sendDistress,
 };

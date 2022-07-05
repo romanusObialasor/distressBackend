@@ -7,7 +7,6 @@ const {
   deleteSingleUser,
   updateSingleUser,
   signInUser,
-  sendText,
   sendDistress,
 } = require("../controller/userController");
 
@@ -21,7 +20,5 @@ myRoter
   .patch(updateSingleUser)
   .delete(deleteSingleUser);
 myRoter.route("/sign").post(signInUser);
-
-myRoter.route("/message").post(sendText);
 
 module.exports = myRoter;
