@@ -24,9 +24,10 @@ oAuthPass.setCredentials({ refresh_token: refresh_Token });
 
 const SendMail = async (emailer, userName) => {
   try {
-    const hour = new Date().getHours();
-    const minute = new Date().getMinutes();
-    const seconds = new Date().getSeconds();
+    const today = new Date();
+
+    const time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     const createToken = await oAuthPass.getAccessToken();
     const datatoken = await crypto.randomBytes(34).toString("hex");
     const token = await jwt.sign({ datatoken }, "TheSecret", {
@@ -44,12 +45,21 @@ const SendMail = async (emailer, userName) => {
       },
     });
     const mailOptions = {
-      from: "Romanus Obialasor",
+      from: "https://distress-cl.herokuapp.com/",
       to: emailer,
       subject: "Distress Signal",
       html: `
-           <h4>This is ${userName}, am currently in danger. My location as at ${hour}:${minute}:${seconds} is Locaiton</h4>
-           `,
+      <div style="font-family: cursive">
+      <h2>A Distress signal</h2>
+      <p>
+        <div>name: <span style="margin-left: 10px;">${userName}</span></div>
+        <div style="margin-top: 20px">Time: <span style="margin-left: 10px;">${time}</span></div>
+        <div  style="margin-top: 20px">Details: <span style="margin-left: 10px;">this is ${userName} please am in danger, send help immediatly!!!</span></div>
+        <div  style="margin-top: 20px">Source: <span style="margin-left: 10px;"><a href="https://distress-cl.herokuapp.com/">Distress Signal</a></span></div>
+      </p>
+      <div style="font-weight: bold;">We advice that you contact the neccessary security needed to save Romanus Obilasor</div>
+    </div>
+      `,
     };
 
     const result = transport.sendMail(mailOptions);
