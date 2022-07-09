@@ -5,6 +5,7 @@ const {
   getAllUser,
   getUser,
   deleteSingleUser,
+  getSingleUser,
   updateSingleUser,
   signInUser,
   sendDistress,
@@ -16,7 +17,7 @@ myRoter.route("/sendMail").post(sendDistress);
 myRoter.route("/user").get(getAllUser);
 myRoter
   .route("/user/:id")
-  .get(getUser)
+  .get(getSingleUser)
   .patch(updateSingleUser)
   .delete(deleteSingleUser);
 myRoter.route("/sign").post(signInUser);
