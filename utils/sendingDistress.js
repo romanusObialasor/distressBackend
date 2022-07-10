@@ -49,7 +49,7 @@ const SendMail = async (emailer, userName) => {
       to: emailer,
       subject: "Distress Signal",
       html: `
-      <div style="font-family: cursive">
+      <div>
       <h2>A Distress signal</h2>
       <p>
         <div>name: <span style="margin-left: 10px;">${userName}</span></div>
@@ -57,7 +57,7 @@ const SendMail = async (emailer, userName) => {
         <div  style="margin-top: 20px">Details: <span style="margin-left: 10px;">this is ${userName} please am in danger, send help immediatly!!!</span></div>
         <div  style="margin-top: 20px">Source: <span style="margin-left: 10px;"><a href="https://distress-cl.herokuapp.com/">Distress Signal</a></span></div>
       </p>
-      <div style="font-weight: bold;">We advice that you contact the neccessary security needed to save Romanus Obilasor</div>
+      <div style="font-weight: bold;">We advice that you contact the neccessary security needed to save ${userName}</div>
     </div>
       `,
     };
