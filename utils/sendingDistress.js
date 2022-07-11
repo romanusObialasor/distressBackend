@@ -45,7 +45,7 @@ const SendMail = async (emailer, userName) => {
       },
     });
     const mailOptions = {
-      from: "https://distress-cl.herokuapp.com/",
+      from: "Distress Signal",
       to: emailer,
       subject: "Distress Signal",
       html: `
